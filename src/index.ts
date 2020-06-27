@@ -5,7 +5,8 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-  // ... your Prisma Client queries will go here
+  const result = await prisma.post.count()
+  console.log(`Here's the post count: ${result}`)
 }
 
 main()
