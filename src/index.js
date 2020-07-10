@@ -39,52 +39,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var client_1 = require("@prisma/client");
 var prisma = new client_1.PrismaClient();
-var countPosts = function () { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, prisma.post.count()];
-            case 1: return [2 /*return*/, _a.sent()];
-        }
+function main() {
+    return __awaiter(this, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, prisma.post.count()];
+                case 1:
+                    result = _a.sent();
+                    console.log("Here's the post count: " + result);
+                    return [2 /*return*/];
+            }
+        });
     });
-}); };
-var findManyPosts = function (authorId) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                if (!authorId) return [3 /*break*/, 2];
-                return [4 /*yield*/, prisma.post.findMany({
-                        where: {
-                            author: authorId
-                        }
-                    })];
-            case 1: return [2 /*return*/, _a.sent()];
-            case 2: return [4 /*yield*/, prisma.post.findMany()];
-            case 3: return [2 /*return*/, _a.sent()];
-        }
-    });
-}); };
-var main = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var result, authorPosts;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, countPosts()
-                // const posts: Post[] = await findManyPosts()
-            ];
-            case 1:
-                result = _a.sent();
-                return [4 /*yield*/, findManyPosts('ckbmq7zyk00fm0727bq3yr6vt')];
-            case 2:
-                authorPosts = _a.sent();
-                console.log("Here is the post count: " + result);
-                console.dir(authorPosts);
-                return [2 /*return*/];
-        }
-    });
-}); };
+}
 main()["catch"](function (e) { return console.error(e); })["finally"](function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
     switch (_a.label) {
         case 0: return [4 /*yield*/, prisma.disconnect()];
         case 1: return [2 /*return*/, _a.sent()];
     }
 }); }); });
-//# sourceMappingURL=index.js.map
